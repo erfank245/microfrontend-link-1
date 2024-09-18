@@ -1,16 +1,18 @@
 import "./set-public-path";
 import singleSpaVue from 'single-spa-vue';
-import { createMemoryHistory, createRouter } from "vue-router";
+import { createWebHistory, createRouter } from "vue-router";
+import {} from "vue-router"
 import { h, createApp } from "vue";
 
 import App from "./App.vue";
+import Link1 from "./component/Link1.vue";
 
 const routes = [
-  { path: "/", exact: true, redirect: '/link-1'}
+  {path: "/link-1", component: Link1}
 ];
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes,
 })
 
@@ -18,12 +20,7 @@ const vueLifecycles = singleSpaVue({
   createApp,
   appOptions: {
     render() {
-      return h(App, {
-        links: this.links,
-        name: this.name,
-        mountParcel: this.mountParcel,
-        // singleSpa: this.singleSpa,
-      });
+      return h(App);
     },
   },
   handleInstance: (app) => {

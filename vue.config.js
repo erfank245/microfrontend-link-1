@@ -11,7 +11,7 @@ module.exports = defineConfig({
         "Access-Control-Allow-Origin": "*"
       },
       https: true,
-      port: 8501,
+      port: 8502,
       host: "localhost"
     },
     externals: [/^@vue-mf\/.+/]
